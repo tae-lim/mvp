@@ -1,0 +1,30 @@
+{
+  "name": "hrr33-mvp",
+  "version": "1.0.0",
+  "description": "Welcome to Your Command Center",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tae-lim/hrr33-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tae-lim/hrr33-mvp/issues"
+  },
+  "homepage": "https://github.com/tae-lim/hrr33-mvp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.2.12",
+    "nodemon": "^1.18.4",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "underscore": "^1.9.1",
+    "webpack": "^4.17.1"
+  }
+}
