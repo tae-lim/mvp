@@ -12,11 +12,12 @@ class App extends React.Component {
       topUpcomingGames: [],
     }
     this.updateMyGames = this.updateMyGames.bind(this);
+    this.fetch = this.fetch.bind(this);
   }
 
-  updateMyGames(games) {
+  updateMyGames(gameData) {
     this.setState({
-      myGames: games
+      myGames: gameData
     })
   }
 
@@ -24,13 +25,19 @@ class App extends React.Component {
     $.ajax({
       type: 'GET',
       url: '/',
+      context: this,
       success: function (incomingGameData) {
         this.updateMyGames(incomingGameData);
+        console.log(this.state.myGames);
       },
       failure: function () {
         console.log('Game Data was not received');
       }
     })
+  }
+
+  componentDidMount() {
+    this.fetch();
   }
 
   render () {

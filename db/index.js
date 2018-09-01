@@ -39,7 +39,15 @@ let storeData = (gameTitle) => {
 }
 
 let query = (callback) => {
-
+  Game.find({})
+  .sort({'rating': -1})
+  .limit(50)
+  .exec((err, gameData) => {
+    if (err) {
+      console.log('gameData unable to query');
+    }
+    callback(null, gameData);
+  })
 }
 
 module.exports.storeData = storeData;

@@ -16,6 +16,7 @@ class GameList extends React.Component {
     this.handleProgress = this.handleProgress.bind(this);
     this.post = this.post.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    console.log('this is props', props);
   }
 
   post(postData) {
