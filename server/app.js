@@ -39,10 +39,10 @@ app.get('/game', (req, res) => {
 
 app.get('/getGood', (req, res) => {
   
-  // helper.getTopGames((gameReviews) => {
-  //   res.send(gameReviews);
-  // });
-  helper.getTopGames();
+  helper.getTopGames((gameReviews) => {
+    console.log(gameReviews);
+    res.send(gameReviews);
+  });
   
 })
 

@@ -33,20 +33,20 @@ class App extends React.Component {
   //url - /gitGood
   //success save the data to this.state.topGames
   fetchTopGames() {
-    // var that = this;
+    var that = this;
     $.ajax({
       type: 'GET',
       url: '/getGood',
       success: (topGames)=> {
         console.log(topGames);
-        // that.setState({
-        //   topGames: topGames
-        // })
+        that.setState({
+          topGames: topGames
+        })
       },
       failure: () => {
         console.log('ajax request from client not receiving data');
       }
-    }).done(console.log('AJAX FINISHED'));
+    }).done(console.log(that.state.topGames));
   }
 
   fetch() {
@@ -73,13 +73,12 @@ class App extends React.Component {
 
 
   render () {
-    console.log('this is this in render', this);
-    console.log('this is this.state.myGameList in render', this.state.myGameList);
     return (
     <div>
         <h1>Command Center</h1>
         <h3>Welcome back Commander</h3>
         <GameList games={this.state.myGameList}/>
+        <TopGames topgames={this.state.topGames}/>
     </div>
     )
   }
