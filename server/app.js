@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const database = require('../db/index.js');
 const SRC_DIR = path.join(__dirname, '../public/dist');
-//const helper = require('../helpers/apifunction.js');
+const helper = require('../helpers/apifunctions.js');
 
 // Need middleware
   //need body parser
@@ -37,14 +37,14 @@ app.get('/game', (req, res) => {
 // Accept	application/json
 
 
-// app.get('/getGood', (req, res) => {
+app.get('/getGood', (req, res) => {
   
-//   // helper.getTopGames((gameReviews) => {
-//   //   res.send(gameReviews);
-//   // });
-//   // helper.getTopGames();
+  // helper.getTopGames((gameReviews) => {
+  //   res.send(gameReviews);
+  // });
+  helper.getTopGames();
   
-// })
+})
 
 // //post functions
 app.post('/', (req, res) => {
