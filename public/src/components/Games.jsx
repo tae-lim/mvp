@@ -16,7 +16,6 @@ class GameList extends React.Component {
     this.handleProgress = this.handleProgress.bind(this);
     this.post = this.post.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log('this is props', props);
   }
 
   post(postData) {
@@ -37,7 +36,6 @@ class GameList extends React.Component {
       progress: this.state.progress
     }
     this.post(gameInfo);
-    
   }
 
   handleTitle(e) {
@@ -116,6 +114,16 @@ class GameList extends React.Component {
             <th>Rating</th>
             <th>Progress</th>
           </tr>
+            {this.props.games.map((game) => {
+              return (
+                <tr>
+                  <td>{game.title}</td>
+                  <td>{game.system}</td>
+                  <td>{game.rating}</td>
+                  <td>{game.progress}</td>
+                </tr>
+              )
+            })}
              
         </table>
       </div>
