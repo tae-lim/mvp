@@ -14,21 +14,34 @@ db.once('open', function() {
 });
 
 var gameSchema = new mongoose.Schema({
-  //columns go here
+  title: String,
+  system: String,
+  rating: String,
+  progress: String
 });
 
-var Games = mongoose.model('Games', gameSchema);
+var Game = mongoose.model('Games', gameSchema);
 
+//we have to instantiate model and invoke SAVE to save it to model
+let storeData = (gameTitle) => {
+  console.log(gameTitle)
+  let GameData = new Game({
+    title: gameTitle.title,
+    system: gameTitle.system,
+    rating: gameTitle.rating,
+    progress: gameTitle.progress
+  }).save((err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log('Game Data Saved Succesfully');
+  })
+}
 
-//do i want to change this back to a regular function?
-gameSchema.methods.save = (gameTitle) => {
+let query = (callback) => {
 
 }
 
-gameSchema.methods.query = (callback) => {
-
-}
-
-module.exports.save = gameSchema.methods.save;
-module.exports.query = gameSchema.methods.query;
+module.exports.storeData = storeData;
+module.exports.query = query;
 
