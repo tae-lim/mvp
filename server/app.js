@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const database = require('../db/index.js');
 const SRC_DIR = path.join(__dirname, '../public/dist');
+//const helper = require('../helpers/apifunction.js');
 
 // Need middleware
   //need body parser
@@ -19,15 +20,31 @@ app.use(express.static(SRC_DIR));
 
 // Need require? Maybe needed if doing api calls
 // get functions
-app.get('/getGames', (req, res) => {
+app.get('/game', (req, res) => {
   database.query((err, gameData) => {
     if (err) {
       console.log('server did not receive gameData');
     }
-    console.log(gameData);
     res.send(gameData);
   });
 });
+
+//make api call to IGDB at a given endpoint
+//content type
+//Headers
+// Key	Value
+// user-key	YOUR_KEY
+// Accept	application/json
+
+
+// app.get('/getGood', (req, res) => {
+  
+//   // helper.getTopGames((gameReviews) => {
+//   //   res.send(gameReviews);
+//   // });
+//   // helper.getTopGames();
+  
+// })
 
 // //post functions
 app.post('/', (req, res) => {

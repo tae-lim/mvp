@@ -6,9 +6,9 @@ class GameList extends React.Component {
     super(props);
     this.state = {
       title: '',
-      system: '',
-      rating: '',
-      progress: '',
+      system: 'PC',
+      rating: '1/5',
+      progress: 'New Game',
     }
     this.handleTitle = this.handleTitle.bind(this);
     this.handleSystem = this.handleSystem.bind(this);
@@ -17,6 +17,13 @@ class GameList extends React.Component {
     this.post = this.post.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  //DELETION
+  //delete button onClick ->
+  //handle delete
+    //get the index value of the item that was clicked
+    //splice the array at that index
+  
 
   post(postData) {
     $.ajax({
@@ -121,6 +128,8 @@ class GameList extends React.Component {
                   <td>{game.system}</td>
                   <td>{game.rating}</td>
                   <td>{game.progress}</td>
+                  <button onClick={console.log('editing')}>edit</button>
+                  <button onClick={console.log('deleting')}>delete</button>
                 </tr>
               )
             })}
