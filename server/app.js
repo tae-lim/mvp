@@ -19,12 +19,12 @@ app.use(express.static(SRC_DIR));
 
 // Need require? Maybe needed if doing api calls
 // get functions
-app.get('/', (req, res) => {
+app.get('/getGames', (req, res) => {
   database.query((err, gameData) => {
     if (err) {
       console.log('server did not receive gameData');
     }
-    console.log(req);
+    console.log(gameData);
     res.send(gameData);
   });
 });

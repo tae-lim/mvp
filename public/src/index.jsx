@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myGames: [],
+      myGameList: ['asdf'],
       topGames: [],
       topUpcomingGames: [],
     }
@@ -17,18 +17,19 @@ class App extends React.Component {
 
   updateMyGames(gameData) {
     this.setState({
-      myGames: gameData
+      myGameList: gameData
     })
   }
 
   fetch() {
     $.ajax({
       type: 'GET',
-      url: '/',
+      url: '/getGames',
       context: this,
       success: function (incomingGameData) {
+        console.log('incomingData upon success', incomingGameData);
         this.updateMyGames(incomingGameData);
-        console.log(this.state.myGames);
+        console.log(this.state.myGameList);
       },
       failure: function () {
         console.log('Game Data was not received');
@@ -46,7 +47,7 @@ class App extends React.Component {
         <h1>Command Center</h1>
         <h3>Welcome back Commander</h3>
         <GameList 
-          games={this.state.myGames}
+          games={this.state.myGameList}
         />
     </div>
     )
@@ -54,29 +55,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-//  updateState(games) {
-//   this.setState({
-//     games: games
-//   })
-// }
-
-// componentDidMount() {
-
-// }
-
-// handleSearch(game) {
-
-// }
-
-// fetch() {
-//   $.ajax({
-//     type: 'GET',
-//     url: '/',
-//     data: {}
-//   })
-// }
-
-// post() {
-  
-// }
