@@ -35,12 +35,15 @@ class GameList extends React.Component {
   }
 
   handleSubmit() {
-    console.log('handleSubmitWorks');
-    let gameInfo = {
-      title: this.state.title,
-      system: this.state.system,
-      rating: this.state.rating,
-      progress: this.state.progress
+    if (this.state.title) {
+      var gameInfo = {
+        title: this.state.title,
+        system: this.state.system,
+        rating: this.state.rating,
+        progress: this.state.progress
+      }
+    } else {
+      window.alert('Please include title');
     }
     this.post(gameInfo);
   }
@@ -128,8 +131,8 @@ class GameList extends React.Component {
                   <td>{game.system}</td>
                   <td>{game.rating}</td>
                   <td>{game.progress}</td>
-                  {/* <button onClick={console.log('editing')}>edit</button>
-                  <button onClick={console.log('deleting')}>delete</button> */}
+                  <button onClick={console.log('editing')}>edit</button>
+                  <button onClick={console.log('deleting')}>delete</button>
                 </tr>
               )
             })}
