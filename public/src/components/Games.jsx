@@ -128,8 +128,8 @@ class GameList extends React.Component {
                   <td>{game.system}</td>
                   <td>{game.rating}</td>
                   <td>{game.progress}</td>
-                  <button onClick={console.log('editing')}>edit</button>
-                  <button onClick={console.log('deleting')}>delete</button>
+                  {/* <button onClick={console.log('editing')}>edit</button>
+                  <button onClick={console.log('deleting')}>delete</button> */}
                 </tr>
               )
             })}
