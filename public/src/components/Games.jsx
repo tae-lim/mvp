@@ -1,5 +1,10 @@
 import React from 'react';
 import $ from "jquery";
+import { Table } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
+import { FormGroup } from 'react-bootstrap';
+
 
 class GameList extends React.Component {
   constructor(props) {
@@ -26,6 +31,13 @@ class GameList extends React.Component {
       data: postData
     })
     .done(console.log('sweet deal'));
+  }
+
+  getValidationState() {
+    var length = this.state.title.length;
+    if (length > 0) return 'success';
+    else if (length === 0) return 'error';
+    return null;
   }
 
   handleSubmit() {
@@ -116,13 +128,18 @@ class GameList extends React.Component {
           </button>
         </form>
         <br></br>
-        <table>
-          <tr>
-            <th>Title</th>
-            <th>System</th>
-            <th>Rating</th>
-            <th>Progress</th>
-          </tr>
+        <h3>My Games</h3>
+        <Table striped bordered condensed hover>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>System</th>
+              <th>Rating</th>
+              <th>Progress</th>
+              <th>Edit/Delete</th>
+            </tr>
+          </thead>
+          <tbody>
             {this.props.games.map((game, index) => {
               return (
                 <tr>
@@ -130,12 +147,13 @@ class GameList extends React.Component {
                   <td>{game.system}</td>
                   <td>{game.rating}</td>
                   <td>{game.progress}</td>
-                  <button onClick={() => {console.log(`edit ${index}`)}}>edit</button>
-                  <button onClick={() => {this.handleDelete(index)}}>delete</button>
+                  <button onClick={() => {console.log(`edit ${index}`)}}>Edit</button>
+                  <button onClick={() => {this.handleDelete(index)}}>Delete</button>
                 </tr>
               )
             })}
-        </table>
+          </tbody>
+        </Table>
       </div>
     )
   }
