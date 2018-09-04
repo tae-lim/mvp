@@ -21,9 +21,6 @@ module.exports = {
             include: SRC_DIR,
             exclude: /node_modules/,
             loader: 'babel-loader'
-        }, {
-            test: /\.css$/,
-            loader: 'style-loader!css-loader'
         }]
     },
     plugins: [HTMLWebpackPluginConfig]
