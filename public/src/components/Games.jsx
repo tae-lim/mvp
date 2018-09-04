@@ -16,14 +16,8 @@ class GameList extends React.Component {
     this.handleProgress = this.handleProgress.bind(this);
     this.post = this.post.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
-
-  //DELETION
-  //delete button onClick ->
-  //handle delete
-    //get the index value of the item that was clicked
-    //splice the array at that index
-  
 
   post(postData) {
     $.ajax({
@@ -42,10 +36,15 @@ class GameList extends React.Component {
         rating: this.state.rating,
         progress: this.state.progress
       }
+      this.post(gameInfo);
     } else {
-      window.alert('Please include title');
+      window.alert('Please Include Title Before Submit');
     }
-    this.post(gameInfo);
+  }
+
+  handleDelete(index) {
+    this.props.games.splice(index, 1);
+    console.log(this.props.games);
   }
 
   handleTitle(e) {
@@ -124,19 +123,18 @@ class GameList extends React.Component {
             <th>Rating</th>
             <th>Progress</th>
           </tr>
-            {this.props.games.map((game) => {
+            {this.props.games.map((game, index) => {
               return (
                 <tr>
                   <td>{game.title}</td>
                   <td>{game.system}</td>
                   <td>{game.rating}</td>
                   <td>{game.progress}</td>
-                  <button onClick={console.log('editing')}>edit</button>
-                  <button onClick={console.log('deleting')}>delete</button>
+                  <button onClick={() => {console.log(`edit ${index}`)}}>edit</button>
+                  <button onClick={() => {this.handleDelete(index)}}>delete</button>
                 </tr>
               )
             })}
-             
         </table>
       </div>
     )
@@ -145,14 +143,3 @@ class GameList extends React.Component {
 
 //You need to export the class and the parent component needs to import.
 export default GameList;
-
-// {props.games.map((game) => {
-//   return (
-//     <tr>
-//       <td>Something</td>
-//       <td>Something</td>
-//       <td>Something</td>
-//       <td>Something</td>
-//     </tr>
-//     )
-//   })} 
